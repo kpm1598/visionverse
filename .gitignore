@@ -1,0 +1,18 @@
+# Python virtual environments
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Editor
+.vscode/
+
+# Local captures and recordings made by the apps
+# (the one booth strip already committed stays tracked; new ones won't be added)
+captures/*
+!captures/booth_20261115_222511.png
+
+# Secrets / local config
+.env

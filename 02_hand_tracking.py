@@ -1,12 +1,14 @@
 
+import os
+
 import cv2
 import mediapipe as mp
 
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
 
-# Path to the downloaded AI model
-MODEL_PATH = "models/hand_landmarker.task"
+# Path to the AI model (it sits next to this script, in the repo root)
+MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "hand_landmarker.task")
 
 # Configure the hand-tracking model
 base_options = python.BaseOptions(model_asset_path=MODEL_PATH)
