@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VisionVerse — Glam Studio (Web)</title>
+<meta name="description" content="Draw in the air with a pinch. VisionVerse Glam Studio in the browser: AI hand tracking, neon air-drawing, camera filters and a photo booth. Everything runs locally on your device.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand">✦ VisionVerse <span>Glam Studio — Web</span></div>
+  <div id="statusChip" class="chip"><span id="statusDot" class="dot"></span><span id="statusText">not started</span></div>
+  <div id="recChip" class="chip rec hidden">● REC</div>
+</header>
+
+<main id="stage">
+  <canvas id="view" width="1280" height="720"></canvas>
+
+  <div id="palette" class="rail" aria-label="Pen colours"></div>
+
+  <div id="panel">
+    <div id="filters" class="row"></div>
+    <div class="row">
+      <button data-action="undo">undo</button>
+      <button data-action="clear">clear</button>
+      <button data-action="booth">booth</button>
+      <button data-action="photo" id="photoBtn" title="Photo (3-2-1)">📸</button>
+      <button data-action="rec">rec</button>
+      <button data-action="help">how to</button>
+    </div>
+    <div class="hint">pinch right hand to draw · left hand to erase</div>
+  </div>
+
+  <div id="bigCount" class="hidden"></div>
+  <div id="flash"></div>
+  <div id="toast" class="hidden"></div>
+
+  <div id="stripPreview" class="overlay hidden">
+    <img id="stripImg" alt="Your photo booth strip">
+    <div class="overlayBtns">
+      <a id="stripDownload" download="booth.png"><button>download strip</button></a>
+      <button data-action="closeStrip">close</button>
+    </div>
+  </div>
+
+  <div id="help" class="overlay hidden">
+    <div class="card">
+      <h2>HOW TO</h2>
+      <p><b>Pinch RIGHT hand</b> (thumb + index) — draw with colour</p>
+      <p><b>Pinch LEFT hand</b> — erase</p>
+      <p><b>Pinch over</b> a colour / filter / button to pick it</p>
+      <p><b>Big round button</b> — 3-2-1 photo, downloaded to your device</p>
+      <p><b>BOOTH</b> — 4 photos → a photo strip</p>
+      <p><b>Mouse</b> — hold and drag on the picture to draw, Shift+drag erases</p>
+      <p>Keys: <b>Z</b> undo · <b>C</b> clear · <b>1–5</b> filters · <b>P</b> photo · <b>B</b> booth · <b>V</b> rec · <b>S</b> swap hands · <b>K</b> skeleton · <b>H</b> help</p>
+      <button data-action="help">close</button>
+    </div>
+  </div>
+
+  <div id="startScreen">
+    <div class="card">
+      <h1>✦ Glam Studio</h1>
+      <p>Draw in the air with a pinch — AI hand tracking, neon pen, filters and a photo booth, right in your browser.</p>
+      <p class="small">Everything runs on your device. Your camera video never leaves your computer — the only download is the one-time hand-tracking model.</p>
+      <button id="startBtn">▶ Start camera</button>
+      <p id="startMsg" class="small"></p>
+    </div>
+  </div>
+</main>
+
+<footer>VisionVerse · web version of <code>pinch_pop.py</code> · <a href="https://github.com/kpm1598/visionverse">source on GitHub</a></footer>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

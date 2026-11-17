@@ -1,0 +1,82 @@
+:root {
+  --accent: rgb(160, 90, 255);
+  --panel: rgba(20, 20, 20, 0.55);
+  --line: rgba(255, 255, 255, 0.55);
+  --text: #f2f2f2;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: #0b0714; color: var(--text);
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif; }
+body { display: flex; flex-direction: column; }
+header { display: flex; align-items: center; gap: 14px; padding: 10px 16px; }
+.brand { font-weight: 700; font-size: 20px; letter-spacing: 0.4px; }
+.brand span { color: var(--accent); font-weight: 600; font-size: 14px; margin-left: 6px; }
+.chip { display: inline-flex; align-items: center; gap: 8px; background: var(--panel);
+  border: 1px solid rgba(255,255,255,0.25); border-radius: 999px; padding: 5px 12px; font-size: 13px; }
+.chip .dot { width: 9px; height: 9px; border-radius: 50%; background: #787878; }
+.chip.on .dot { background: #5adc78; }
+.chip.rec { color: #ff5050; font-weight: 700; }
+.hidden { display: none !important; }
+
+#stage { position: relative; flex: 1; min-height: 0; display: flex;
+  align-items: center; justify-content: center; overflow: hidden; }
+#view { width: min(100%, calc((100vh - 150px) * 16 / 9)); max-height: 100%;
+  border-radius: 14px; background: #000; touch-action: none; }
+
+.rail { position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 14px; padding: 14px 10px;
+  background: var(--panel); border: 1px solid rgba(255,255,255,0.25); border-radius: 999px; }
+.rail button { width: 38px; height: 38px; border-radius: 50%; border: 2px solid transparent;
+  cursor: pointer; padding: 0; }
+.rail button.sel { border-color: #fff; transform: scale(1.12); }
+
+#panel { position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%);
+  background: var(--panel); border: 1px solid rgba(255,255,255,0.25); border-radius: 22px;
+  padding: 10px 14px 6px; display: flex; flex-direction: column; gap: 8px; align-items: center;
+  max-width: 96vw; }
+#panel .row { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+#panel button { background: rgba(255,255,255,0.12); color: var(--text); border: 1px solid var(--line);
+  border-radius: 999px; padding: 7px 16px; font-size: 14px; cursor: pointer; }
+#panel button:hover { background: rgba(255,255,255,0.25); }
+#panel button.sel { background: #fff; color: #1e1e1e; font-weight: 600; }
+#panel button.active { background: var(--accent); border-color: var(--accent); }
+#photoBtn { width: 54px; height: 54px; border-radius: 50% !important; font-size: 22px;
+  background: var(--accent) !important; border: 3px solid #fff !important; padding: 0; }
+#panel .hint { font-size: 11.5px; color: rgba(255,255,255,0.75); }
+
+#bigCount { position: absolute; inset: 0; display: flex; flex-direction: column; gap: 8px;
+  align-items: center; justify-content: center; font-size: 150px; font-weight: 800;
+  text-shadow: 0 4px 30px rgba(0,0,0,0.7); pointer-events: none; }
+#bigCount small { font-size: 26px; font-weight: 600; }
+#flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
+#toast { position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+  background: var(--panel); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px;
+  padding: 8px 20px; font-size: 14.5px; }
+
+.overlay { position: absolute; inset: 0; background: rgba(5, 3, 10, 0.72);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; z-index: 5; }
+.overlay .card, #startScreen .card { background: rgba(18, 14, 28, 0.95); border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 20px; padding: 26px 30px; max-width: 560px; width: calc(100% - 40px); text-align: left; }
+.overlay .card h2 { color: var(--accent); margin-top: 0; }
+.overlay button, #startScreen button { background: var(--accent); color: #fff; border: none;
+  border-radius: 999px; padding: 10px 22px; font-size: 15px; cursor: pointer; }
+#stripImg { max-height: 78%; border: 3px solid #fff; border-radius: 6px; }
+.overlayBtns { display: flex; gap: 10px; }
+.overlayBtns button { background: rgba(255,255,255,0.15); border: 1px solid var(--line); color: var(--text);
+  border-radius: 999px; padding: 9px 20px; font-size: 14.5px; cursor: pointer; }
+
+#startScreen { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 35%, #241243 0%, #0b0714 70%);
+  display: flex; align-items: center; justify-content: center; z-index: 6; }
+#startScreen .card { text-align: center; }
+#startScreen h1 { margin: 0 0 8px; font-size: 34px; }
+#startScreen .small { font-size: 13px; color: rgba(255,255,255,0.7); }
+#startBtn { font-size: 18px; padding: 13px 30px; margin-top: 8px; }
+#startBtn:disabled { opacity: 0.55; cursor: wait; }
+
+footer { padding: 8px 16px; font-size: 12.5px; color: rgba(255,255,255,0.55); text-align: center; }
+footer a { color: var(--accent); }
+@media (max-width: 640px) {
+  .rail { right: 6px; gap: 9px; padding: 10px 7px; }
+  .rail button { width: 30px; height: 30px; }
+  #bigCount { font-size: 96px; }
+}

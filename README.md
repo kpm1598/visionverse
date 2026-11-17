@@ -4,6 +4,15 @@ Webcam + AI hand-tracking experiments built with **OpenCV** and **MediaPipe**
 (Google's Hand Landmarker model). Draw in the air with a pinch, apply live
 camera filters, and take photo-booth strips — no mouse or touchscreen needed.
 
+## 🌐 Web app — no install
+
+**Try Glam Studio in your browser: https://kpm1598.github.io/visionverse/**
+
+The `docs/` folder is a full web port of `pinch_pop.py`: the same pinch
+drawing, palette, filters and photo booth, using MediaPipe's Hand Landmarker
+for the web. Everything runs locally in the browser — camera video never
+leaves your device; photos, strips and recordings download straight to it.
+
 ## What's inside
 
 | File | What it does |
@@ -13,6 +22,7 @@ camera filters, and take photo-booth strips — no mouse or touchscreen needed.
 | `pinch_pop.py` | The main app — **"Glam Studio"**: air-drawing, filters and a photo booth (see controls below). |
 | `hand_landmarker.task` | The MediaPipe hand-tracking model used by 02 and pinch_pop. `pinch_pop.py` re-downloads it automatically if it's missing. |
 | `captures/` | Photos, photo-booth strips and recordings saved by the apps land here. |
+| `docs/` | The web app (GitHub Pages) — `index.html` + `style.css` + `app.js`, a browser port of `pinch_pop.py`. |
 
 ## Setup (Windows)
 
